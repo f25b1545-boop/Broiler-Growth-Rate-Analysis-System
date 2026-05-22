@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broiler Growth Derivative Simulator - Malaysian Animal Husbandry Tech</title>
+    
+    <!-- Tailwind CSS for Modern UI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js for Interactive Animations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- KaTeX for Beautiful LaTeX Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col antialiased">
+
+    <!-- Top Navigation Header -->
+    <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+                <span class="px-2.5 py-1 text-xs font-semibold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">
+                    Animal Husbandry Tech • Mathematical Bioscience
+                </span>
+                <h1 class="text-2xl font-bold tracking-tight text-white mt-1">
+                    Broiler Growth Rate Analysis System
+                </h1>
+                <p class="text-xs text-slate-400">
+                    Applying Calculus to Optimize Feed Conversion & Harvest Windows in Tropical Poultry Farms
+                </p>
+            </div>
+            <div class="flex items-center gap-2 text-sm text-slate-300 bg-slate-900 p-2 rounded-lg border border-slate-800 self-start md:self-auto">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Interactive Learning Tool</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left Column: Scientific Overview & Math Model -->
+        <div class="lg:col-span-5 flex flex-col gap-6">
+            
+            <!-- Bioscience Scenario Context Card -->
+            <section class="bg-slate-950 border border-slate-800 rounded-2xl p-6 shadow-xl">
+                <h2 class="text-lg font-bold text-emerald-400 mb-3 flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    The Bioscience Problem
+                </h2>
+                <div class="text-sm text-slate-300 space-y-3 leading-relaxed">
+                    <p>
+                        In commercial poultry operations in Malaysia (such as those in Johor, Perak, and Kelantan), 
+                        <strong>Cobb 500</strong> broilers represent the majority of meat chickens raised. Farmers must optimize feed 
+                        consumption relative to weight gain to maximize profits.
+                    </p>
+                    <p>
+                        The cumulative growth of a broiler follows a sigmoidal pattern modeled perfectly by the 
+                        <strong>Gompertz Growth Curve</strong> $f(t)$. However, to find the <em>exact moment</em> when feed protein 
+                        conversion efficiency transitions from muscle gain to fat deposition, we must calculate the first derivative 
+                        \( f'(t) \)—representing the <strong>Instantaneous Daily Weight Gain (g/day)</strong>.
+                    </p>
+                    <p>
+                        Identifying the peak of \( f'(t) \) (the inflection point) allows precision feeding regimens, switching 
+                        from expensive Starter feed to Grower and Finisher feeds at optimal biochemical milestones.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Mathematical Formulations -->
+            <section class="bg-slate-950 border border-slate-800 rounded-2xl p-6 shadow-xl">
+                <h3 class="text-lg font-bold text-sky-400 mb-4 flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    Mathematical Growth Models
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                        <span class="text-xs text-slate-400 block mb-1 font-semibold tracking-wider uppercase">Gompertz Growth Equation</span>
+                        <div class="py-2 text-center text-lg overflow-x-auto text-white">
+                            $$f(t) = A \cdot e^{-B \cdot e^{-k \cdot t}}$$
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">Calculates predicted live body weight (grams) at day \( t \).</p>
+                    </div>
+
+                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                        <span class="text-xs text-slate-400 block mb-1 font-semibold tracking-wider uppercase">Growth Rate (First Derivative)</span>
+                        <div class="py-2 text-center text-lg overflow-x-auto text-emerald-400">
+                            $$f'(t) = A \cdot k \cdot B \cdot e^{-k \cdot t} \cdot e^{-B \cdot e^{-k \cdot t}} = k \cdot B \cdot e^{-k \cdot t} \cdot f(t)$$
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">Determines the rate of change in body weight (\(\text{g/day}\)) at day \( t \).</p>
+                    </div>
+                </div>
+
+                <!-- Parameters Legend -->
+                <div class="mt-4 pt-4 border-t border-slate-800/60 grid grid-cols-2 gap-2 text-xs text-slate-400">
+                    <div><strong class="text-slate-200">\(A\)</strong>: Asymptotic Max Weight</div>
+                    <div><strong class="text-slate-200">\(B\)</strong>: Initial Weight Scaling</div>
+                    <div><strong class="text-slate-200">\(k\)</strong>: Environmental Growth Index</div>
+                    <div><strong class="text-slate-200">\(t\)</strong>: Broiler Age (Days)</div>
+                </div>
+            </section>
+
+            <!-- Real World References -->
+            <section class="bg-slate-950 border border-slate-800 rounded-2xl p-6 shadow-xl">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Malaysian Bioscience Data Sources</h3>
+                <ul class="text-xs text-slate-300 space-y-2">
+                    <li class="flex items-start gap-2">
+                        <span class="text-emerald-500">✔</span>
+                        <div>
+                            <span class="font-semibold text-slate-200">Department of Veterinary Services (DVS) Malaysia</span>
+                            <p class="text-slate-400">Livestock Statistics and Standard Management Guidelines (<a href="https://www.dvs.gov.my" target="_blank" class="text-emerald-400 underline hover:text-emerald-300">dvs.gov.my</a>)</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-emerald-500">✔</span>
+                        <div>
+                            <span class="font-semibold text-slate-200">MARDI (Malaysian Agricultural Research & Dev. Inst.)</span>
+                            <p class="text-slate-400">Evaluation of growth parameters of commercial broilers in tropical closed-house facilities (<a href="https://www.mardi.gov.my" target="_blank" class="text-emerald-400 underline hover:text-emerald-300">mardi.gov.my</a>)</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+        </div>
+
+        <!-- Right Column: Interactive Simulator & Live Data Feedback -->
+        <div class="lg:col-span-7 flex flex-col gap-6">
+            
+            <!-- Real-time Control Panel -->
+            <section class="bg-slate-950 border border-slate-800 rounded-2xl p-6 shadow-xl">
+                <h2 class="text-lg font-bold text-white mb-4">Environmental & Nutritional Variables</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Control 1: Heat Stress -->
+                    <div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="font-medium text-slate-300 flex items-center gap-1">
+                                🔥 Ambient Heat Index (Tropical Climate)
+                            </span>
+                            <span class="text-emerald-400 font-bold" id="heat-stress-val">30°C (Optimal Ventilation)</span>
+                        </div>
+                        <input type="range" id="heat-stress" min="26" max="38" step="1" value="30" 
+                               class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                        <span class="text-[11px] text-slate-400 mt-1 block">Higher heat stress in open houses reduces metabolic growth efficiency (\(k\)).</span>
+                    </div>
+
+                    <!-- Control 2: Nutrition Quality -->
+                    <div>
+                        <div class="flex justify-between text-sm mb-2">
+                            <span class="font-medium text-slate-300 flex items-center gap-1">
+                                🌾 Crude Protein & Amino Acid Balance
+                            </span>
+                            <span class="text-sky-400 font-bold" id="nutrition-val">Optimal formulation</span>
+                        </div>
+                        <input type="range" id="nutrition" min="70" max="120" step="5" value="100" 
+                               class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-sky-500">
+                        <span class="text-[11px] text-slate-400 mt-1 block">Affects the final attainable slaughter weight target parameter (\(A\)).</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chart Display -->
+            <section class="bg-slate-950 border border-slate-800 rounded-2xl p-6 shadow-xl relative">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <h2 class="text-lg font-bold text-white">Broiler Performance & Derivative Analysis</h2>
+                        <p class="text-xs text-slate-400">Click anywhere on the line to run calculus calculations for that day</p>
+                    </div>
+                    <div class="flex gap-4 text-xs font-semibold">
+                        <span class="flex items-center gap-1.5"><span class="w-3 h-1.5 bg-sky-500 rounded-full"></span> Weight f(t)</span>
+                        <span class="flex items-center gap-1.5"><span class="w-3 h-1.5 bg-emerald-400 rounded-full"></span> Growth Rate f'(t)</span>
+                    </div>
+                </div>
+                
+                <div class="relative w-full h-[320px]">
+                    <canvas id="growthChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Interactive Results & Layman's Interpretation Box -->
+            <section id="interactive-report" class="bg-slate-950 border border-emerald-500/30 rounded-2xl p-6 shadow-xl bg-gradient-to-br from-slate-950 to-slate-900/40 relative overflow-hidden">
+                <div class="absolute -right-16 -bottom-16 w-48 h-48 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-800/80">
+                    <div>
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-500/10 text-emerald-400 text-sm border border-emerald-500/20" id="report-day-circle">21</span>
+                            Dynamic Derivative Assessment: Day <span id="report-day">21</span>
+                        </h3>
+                    </div>
+                    <div class="text-xs text-slate-400 italic">Calculated using real-time derivative equations</div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 py-4">
+                    <!-- Weight Calculation f(t) -->
+                    <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+                        <span class="text-xs text-slate-400 uppercase tracking-wider block mb-1">Body Weight \(f(t)\)</span>
+                        <span class="text-3xl font-extrabold text-white" id="calc-weight">1,135 g</span>
+                        <span class="text-xs text-slate-400 block mt-1">Standard predicted weight under current environment</span>
+                    </div>
+
+                    <!-- Derivative Calculation f'(t) -->
+                    <div class="bg-emerald-950/20 p-4 rounded-xl border border-emerald-500/20">
+                        <span class="text-xs text-emerald-400 uppercase tracking-wider block mb-1">Daily Weight Gain \(f'(t)\) [Derivative]</span>
+                        <span class="text-3xl font-extrabold text-emerald-400" id="calc-adg">74.2 g/day</span>
+                        <span class="text-xs text-emerald-300 block mt-1">Instantaneous rate of weight change right now</span>
+                    </div>
+                </div>
+
+                <!-- Layman Explanation Area -->
+                <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-800/60">
+                    <h4 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Technician's Insight & Layman Explanation:</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed" id="layman-explanation">
+                        At Day 21, your broilers are inside their primary growth spurt. This represents the inflection point on the growth curve, where the growth acceleration reaches zero and the daily gain peaks. Any metabolic stress now is extremely costly. Maintain optimal humidity control.
+                    </p>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- Footer with Author Bio and Academic Disclaimer -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-8 px-6 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto space-y-2">
+            <p>Developed for undergraduate curricula in Animal Husbandry Technology & Precision Livestock Farming.</p>
+            <p>© 2026 Malaysia Bio-Agriculture Simulation Engine. Powered by Chart.js & KaTeX for predictive bioscience studies.</p>
+        </div>
+    </footer>
+
+    <!-- Main Dynamic Application Script -->
+    <script>
+        // Default Constants for Cobb 500 Broilers under normal Malaysian climate parameters
+        let base_A = 3200; // Asymptotic maximum weight in grams under optimal conditions
+        let base_B = 4.33; // Biological scaling constant based on ~42g hatchling weight
+        let base_k = 0.0666; // Growth velocity coefficient
+
+        // Elements
+        const heatStressSlider = document.getElementById('heat-stress');
+        const heatStressVal = document.getElementById('heat-stress-val');
+        const nutritionSlider = document.getElementById('nutrition');
+        const nutritionVal = document.getElementById('nutrition-val');
+        
+        // Report Elements
+        const reportDay = document.getElementById('report-day');
+        const reportDayCircle = document.getElementById('report-day-circle');
+        const calcWeight = document.getElementById('calc-weight');
+        const calcAdg = document.getElementById('calc-adg');
+        const laymanExplanation = document.getElementById('layman-explanation');
+
+        // Global Chart Instance
+        let growthChart;
+        let selectedDay = 21; // Default selected point
+
+        // Calculations
+        function getParameters() {
+            // Apply Heat Stress correction to Growth Coefficient k (highly susceptible in Malaysia's tropical humidity)
+            const temperature = parseFloat(heatStressSlider.value);
+            // Cobb 500 thermoneutral zone is 20-24C, performance declines as temperature exceeds 30C
+            let tempFactor = 1.0;
+            if (temperature > 30) {
+                tempFactor = 1.0 - (temperature - 30) * 0.035; // 3.5% decay per degree above 30C
+            } else if (temperature < 30) {
+                tempFactor = 1.0 + (30 - temperature) * 0.01; // Tiny gain at cool optimum house temp
+            }
+            const k = base_k * tempFactor;
+
+            // Apply Protein/Nutrition adjustment to the asymptotic final weight (A)
+            const nutritionPercent = parseFloat(nutritionSlider.value) / 100;
+            const A = base_A * nutritionPercent;
+
+            return { A, B: base_B, k };
+        }
+
+        // Gompertz Function f(t)
+        function f(t, A, B, k) {
+            return A * Math.exp(-B * Math.exp(-k * t));
+        }
+
+        // First Derivative Function f'(t)
+        function df(t, A, B, k) {
+            const fVal = f(t, A, B, k);
+            return k * B * Math.exp(-k * t) * fVal;
+        }
+
+        // Generate data arrays for Chart.js
+        function generateChartData() {
+            const labels = [];
+            const weights = [];
+            const growthRates = [];
+            const { A, B, k } = getParameters();
+
+            for (let day = 0; day <= 42; day++) {
+                labels.push(day);
+                weights.push(parseFloat(f(day, A, B, k).toFixed(1)));
+                growthRates.push(parseFloat(df(day, A, B, k).toFixed(2)));
+            }
+
+            return { labels, weights, growthRates };
+        }
+
+        // Generate Layman Explanation for Selected Day
+        function generateLaymanExplanation(day, weight, adg, k, A) {
+            const { B } = getParameters();
+            // Calculate mathematical inflection point: t_inflection = ln(B) / k
+            const inflectionDay = Math.round(Math.log(B) / k);
+
+            let text = "";
+
+            if (day <= 7) {
+                text = `<strong>[Starter Phase - Day ${day}]:</strong> Broilers are in the early brooding stage. Currently, the daily growth rate is only <strong>${adg} g/day</strong>. While this seems low, it represents rapid relative cellular division. Focus on keeping the floor warm, managing high-quality starter protein crumble, and encouraging feed/water access. This is the foundation of structural organ development.`;
+            } else if (day > 7 && day < inflectionDay) {
+                text = `<strong>[Early Grower Phase - Day ${day}]:</strong> Your flock is accelerating rapidly. The daily gain has hit <strong>${adg} g/day</strong> and is climbing daily as the derivative curve rises. This is the maximum bone development window. Ensure house ventilation is pristine to prevent ammonia buildup.`;
+            } else if (day === inflectionDay || Math.abs(day - inflectionDay) <= 1) {
+                text = `<strong>[Peak Inflection Point - Day ${day}]:</strong> Crucial moment! The growth rate has peaked at <strong>${adg} g/day</strong>. Mathematically, the second derivative of growth is zero (\(f''(t) = 0\)). This is the point of maximum metabolic efficiency. Ensure zero thermal shock to preserve feed conversion ratio (FCR). Feed should now transition to high-density Grower to leverage this peak capacity.`;
+            } else if (day > inflectionDay && day <= 35) {
+                text = `<strong>[Finisher Phase - Day ${day}]:</strong> The growth rate (derivative) is decelerating (down to <strong>${adg} g/day</strong>) even though cumulative weight is still rising to <strong>${weight}g</strong>. The birds are storing more fat now than muscle tissue. This is the prime market-readiness target window used by leading poultry integrators in Malaysia to schedule transport.`;
+            } else {
+                text = `<strong>[Extended Finisher Phase - Day ${day}]:</strong> Over-mature phase. Growth velocity has slumped to <strong>${adg} g/day</strong>. Holding the flock past this day consumes excessive finisher feed for minimal muscle returns. Feed conversion ratio (FCR) is rapidly deteriorating; immediate processing plant dispatch is strongly recommended to protect profit margins.`;
+            }
+
+            return text;
+        }
+
+        // Update calculations and update the visual report card
+        function updateReport(day) {
+            selectedDay = day;
+            const { A, B, k } = getParameters();
+            const weightVal = f(day, A, B, k);
+            const adgVal = df(day, A, B, k);
+
+            reportDay.innerText = day;
+            reportDayCircle.innerText = day;
+            calcWeight.innerText = `${Math.round(weightVal).toLocaleString()} g`;
+            calcAdg.innerText = `${adgVal.toFixed(1)} g/day`;
+
+            laymanExplanation.innerHTML = generateLaymanExplanation(day, Math.round(weightVal), adgVal.toFixed(1), k, A);
+        }
+
+        // Initialize and setup the Chart
+        function initChart() {
+            const ctx = document.getElementById('growthChart').getContext('2d');
+            const data = generateChartData();
+
+            growthChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.labels,
+                    datasets: [
+                        {
+                            label: 'Live Weight f(t) (g)',
+                            data: data.weights,
+                            borderColor: '#38bdf8', // Tailwind sky-400
+                            backgroundColor: 'rgba(56, 189, 248, 0.08)',
+                            borderWidth: 3,
+                            yAxisID: 'yWeight',
+                            pointRadius: (ctx) => ctx.dataIndex === selectedDay ? 8 : 2,
+                            pointBackgroundColor: (ctx) => ctx.dataIndex === selectedDay ? '#ffffff' : '#38bdf8',
+                            pointBorderColor: '#0ea5e9',
+                            pointHoverRadius: 9,
+                            tension: 0.1,
+                            fill: true
+                        },
+                        {
+                            label: "Daily Growth Rate f'(t) (g/day)",
+                            data: data.growthRates,
+                            borderColor: '#34d399', // Tailwind emerald-400
+                            backgroundColor: 'rgba(52, 211, 153, 0.03)',
+                            borderWidth: 2.5,
+                            borderDash: [5, 5],
+                            yAxisID: 'yRate',
+                            pointRadius: (ctx) => ctx.dataIndex === selectedDay ? 8 : 0,
+                            pointBackgroundColor: (ctx) => ctx.dataIndex === selectedDay ? '#34d399' : 'transparent',
+                            pointHoverRadius: 9,
+                            tension: 0.2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    onClick: (event, activeElements) => {
+                        if (activeElements.length > 0) {
+                            const index = activeElements[0].index;
+                            updateReport(index);
+                            growthChart.update();
+                        }
+                    },
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    plugins: {
+                        legend: {
+                            display: false // Using custom styled legend in UI
+                        },
+                        tooltip: {
+                            backgroundColor: '#0f172a',
+                            titleColor: '#f8fafc',
+                            bodyColor: '#cbd5e1',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            padding: 10,
+                            callbacks: {
+                                title: (items) => `Day ${items[0].label} of Grow-out`,
+                                label: (context) => {
+                                    if (context.datasetIndex === 0) {
+                                        return `Weight f(t): ${context.parsed.y} grams`;
+                                    } else {
+                                        return `Gain Rate f'(t): ${context.parsed.y} g/day`;
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(51, 65, 85, 0.3)' },
+                            ticks: { color: '#94a3b8', font: { family: 'Plus Jakarta Sans' } },
+                            title: {
+                                display: true,
+                                text: 'Age (Days since Hatching)',
+                                color: '#94a3b8',
+                                font: { size: 11, weight: 'bold', family: 'Plus Jakarta Sans' }
+                            }
+                        },
+                        yWeight: {
+                            type: 'linear',
+                            position: 'left',
+                            grid: { color: 'rgba(51, 65, 85, 0.3)' },
+                            ticks: { color: '#38bdf8' },
+                            title: {
+                                display: true,
+                                text: 'Cumulative Body Weight f(t) (grams)',
+                                color: '#38bdf8',
+                                font: { size: 11, weight: 'bold', family: 'Plus Jakarta Sans' }
+                            }
+                        },
+                        yRate: {
+                            type: 'linear',
+                            position: 'right',
+                            grid: { drawOnChartArea: false }, // avoid grid overlaps
+                            ticks: { color: '#34d399' },
+                            title: {
+                                display: true,
+                                text: "Daily Gain f'(t) (g/day)",
+                                color: '#34d399',
+                                font: { size: 11, weight: 'bold', family: 'Plus Jakarta Sans' }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Live calculation triggers when sliders are used
+        function handleControls() {
+            const tempVal = parseFloat(heatStressSlider.value);
+            heatStressVal.innerText = `${tempVal}°C (${tempVal > 30 ? 'High Heat Stress' : 'Thermally Controlled'})`;
+
+            const nutrVal = parseFloat(nutritionSlider.value);
+            let nutrDesc = "Optimal feed mix";
+            if (nutrVal < 90) nutrDesc = "Deficient amino-acids/protein";
+            else if (nutrVal > 110) nutrDesc = "Super-fortified premium feed";
+            nutritionVal.innerText = nutrDesc;
+
+            // Regenerate values & animate chart update
+            const data = generateChartData();
+            growthChart.data.datasets[0].data = data.weights;
+            growthChart.data.datasets[1].data = data.growthRates;
+            
+            updateReport(selectedDay);
+            growthChart.update();
+        }
+
+        // Wire Event Listeners
+        heatStressSlider.addEventListener('input', handleControls);
+        nutritionSlider.addEventListener('input', handleControls);
+
+        // Initialize application on window load
+        window.onload = function() {
+            initChart();
+            updateReport(21);
+        };
+    </script>
+</body>
+</html>
